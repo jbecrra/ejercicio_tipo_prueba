@@ -19,7 +19,17 @@ while True:
         trabajadores.append(trabajador)
         print("TRABAJADOR AGREGADO CON ÉXITO!")
     elif opc==2:
-        pass
+        if len(trabajadores)==0:
+            print("NO EXIXTEN TRABAJADORES, ELIJA OPCION 1")
+        else:
+            print("LISTA DED TTRABAJDORES")
+            print("trabajador\tcargo\tSueldo Bruto\tDesc. Salud\tDesc. AFP ")
+            for t in trabajadores:#t: seria cada trabajador de la lista, t es una lista
+                print(f"{t[0]}\t{t[1]}\t{t[2]}\t\t{t[3]}\t\t{t[4]}\t\t{t[5]}")
+                #for x in range(6):
+                    #print(f"{t[x]}\t",end="")
+                #print()
+
     elif opc==3:
         pass
     else:
