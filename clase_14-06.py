@@ -1,5 +1,6 @@
 import os, time
-trabajadores=[]
+from funciones import*
+
 while True:
     print("MENU DE TRABAJADORES")
     print("1. Registrar trabajador")
@@ -7,48 +8,13 @@ while True:
     print("3. Imprimir planilla de sueldos")
     print("4.  salir del programa")
     opc=int(input("ingrese opcion: "))
+    os.system('cls')
     if opc==1:
-        print("REGISTRO TRABAJADOR")
-        nombre_apellido=input("ingrese su nombre y apellido: ")
-        cargo=int(input("ingrese cargo(1:CEO, 2:DESARROLLADOR, 3:ANALISTA): "))
-        sueldo_bruto=int(input("ingrese sueldo bruto: "))
-        desc_salud=int(7/100*sueldo_bruto)
-        desc_afp=int(12/100*sueldo_bruto)
-        sueldo_liquido=sueldo_bruto-desc_salud-desc_afp
-        trabajador=[nombre_apellido,cargo,sueldo_bruto,desc_salud,desc_afp,sueldo_liquido]
-        trabajadores.append(trabajador)
-        print("TRABAJADOR AGREGADO CON ÉXITO!")
+        opc1()
     elif opc==2:
-        if len(trabajadores)==0:
-            print("NO EXIXTEN TRABAJADORES, ELIJA OPCION 1")
-        else:
-            print("LISTA DED TTRABAJDORES")
-            print("trabajador\tcargo\tSueldo Bruto\tDesc. Salud\tDesc. AFP ")
-            for t in trabajadores:#t: seria cada trabajador de la lista, t es una lista
-                print(f"{t[0]}\t{t[1]}\t{t[2]}\t\t{t[3]}\t\t{t[4]}\t\t{t[5]}")
-                #for x in range(6):
-                    #print(f"{t[x]}\t",end="")
-                #print()
-
+        opcion2()
     elif opc==3:
-        if len(trabajadores)==0:
-            print("NO EXIXTEN TRABAJADORES, ELIJA OPCION 1")
-        else:
-            opc2=int(input("que cargo desea imprimir(1:CEO, 2:DESARROLLADOR, 3:ANALISTA,4:TODOS)?: "))
-            if opc==4:
-                with open("todos_trabajadores.txt","a", newline="\n")as archivo:
-                    for t in trabajadores:
-                        texto=f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
-                        archivo.write(texto)
-            else:
-                with open("trabajadores_por_cargo.txt","w")as archivo:
-                    for t in trabajadores:
-                        if opc2==t[1]:
-                            texto=f"{t[0]} {t[1]} {t[2]} {t[3]} {t[4]} {t[5]}"
-                            archivo.write(texto)
-            print("archivo creado con éxito")
-                        
+        opc3()                    
     else:
-        print("Gracias por usar el programa, adios")
-        break
+        opc4()
     time.sleep(3)
